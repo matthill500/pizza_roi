@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Models\role;
+use App\Models\Customer;
+use App\Models\CustomerAddress;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -52,6 +55,12 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'phone' => ['required', 'string', 'min:8', 'max:13'],
+            'age' => ['required','date'],
+            'number' => ['required', 'integer'],
+            'roadOrStreet' => ['required', 'string'],
+            'area' => ['required', 'string'],
+            'eircode' => ['required', 'string'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -68,6 +77,26 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+        ]);
+
+        $uId = $user->id;
+
+        $customer = Customer::create([
+          'age' => $data['age'],
+          'phone' => $data['phone'],
+          'user_id' => $uId,
+        ]);
+
+
+
+        $cId = $customer->id;
+
+        $address = CustomerAddress::create([
+          'number' => $data['number'],
+          'roadOrStreet' => $data['roadOrStreet'],
+          'area' => $data['area'],
+          'eircode' => $data['eircode'],
+          'customer_id' => $cId,
         ]);
 
         $user->roles()->attach(Role::where('name','user')->first());

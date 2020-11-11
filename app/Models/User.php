@@ -45,6 +45,10 @@ class User extends Authenticatable
       return $this->belongsToMany('App\Models\Role', 'user_role');
     }
 
+    public function shop(){
+      return $this->belongsTo('App\Models\Shop', 'user_shop');
+    }
+
     public function authorizeRoles($roles){
       if(is_array($roles)){
         return $this->hasAnyRole($roles) || abort(401, 'This action is unauthorized');
