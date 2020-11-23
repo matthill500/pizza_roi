@@ -7,6 +7,12 @@
       <div class="card">
         <div class="card-header">
           Edit Pizza
+          <button class="btn btn-danger float-right" onclick="removeNewList()" style="margin-left:0.5em;">
+            Remove topping option
+          </button>
+          <button class="btn btn-success float-right" onclick="addNewList()">
+            Add topping option
+          </button>
         </div>
         <div class="card-body">
           @if ($errors->any())
@@ -58,6 +64,25 @@
               <input type="float" class="form-control" id="wholesalePrice" name="wholesalePrice" value="{{old('wholesalePrice', $pizza->wholesalePrice)}}" />
             </div>
 
+
+            <div class="form-group">
+              Current toppings: <br><h2>@foreach($pizza->toppings as $pTopping){{$pTopping->name}} @endforeach</h2>
+              New Toppings:<br>
+              <div class="col-md-6 list">
+               <label for="topping" class="col-md-4 col-form-label text-md-right" style="margin-bottom:0.2em;">Topping</label>
+               <select name="topping_id[0]">
+                 @foreach ($toppings as $topping)
+                   <option value="{{$topping->id}}">
+                     {{$topping->name}}
+                   </option>
+                   @endforeach
+               </select>
+               <br>
+              </div>
+            </div>
+
+            <div class="form-group listRow"></div>
+
             <a href="{{route('admin.pizzas.index')}}" class="btn btn-danger">Cancel</a>
             <button type="submit" class="btn btn-primary float-right">Submit</button>
 
@@ -67,4 +92,17 @@
     </div>
   </div>
 </div>
+
+<script>
+var count = 0;
+function addNewList(){
+  count++;
+  $(".list").clone().removeClass('list').addClass('newClass'+count).appendTo(".listRow");
+  $(".newClass"+count).children("select").attr("name", "topping_id["+count+"]");
+}
+function removeNewList(){
+  $(".newClass"+count).remove();
+  count--;
+}
+</script>
 @endsection

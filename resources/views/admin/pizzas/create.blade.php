@@ -7,6 +7,13 @@
       <div class="card">
         <div class="card-header">
           Add new Pizza
+          <button class="btn btn-danger float-right" onclick="removeNewList()" style="margin-left:0.5em;">
+            Remove topping option
+          </button>
+          <button class="btn btn-success float-right" onclick="addNewList()">
+            Add topping option
+          </button>
+
         </div>
         <div class="card-body">
           @if($errors->any())
@@ -43,7 +50,6 @@
                           <option value="13.5">13.5</option>
                           <option value="11.5">11.5</option>
                           <option value="9.5">9.5</option>
-
                       </select>
                     </div>
                 </div>
@@ -76,6 +82,21 @@
                     </div>
                 </div>
 
+                <div class="form-group">
+                  <div class="col-md-6 list">
+                   <label for="topping" class="col-md-4 col-form-label text-md-right" style="margin-left:11.8em; margin-bottom:0.2em;">Topping</label>
+                   <select name="topping_id[0]">
+                     @foreach($toppings as $topping)
+                       <option value="{{$topping->id}}">
+                         {{$topping->name}}
+                       </option>
+                     @endforeach
+                   </select>
+                  </div>
+                </div>
+
+                <div class="form-group listRow"></div>
+
                 <div class="form-group row mb-0">
                     <div class="col-md-6 offset-md-4">
                         <button type="submit" class="btn btn-primary">
@@ -89,5 +110,18 @@
       </div>
     </div>
   </div>
+
+  <script>
+  var count = 0;
+  function addNewList(){
+    count++;
+    $(".list").clone().removeClass('list').addClass('newClass'+count).appendTo(".listRow");
+    $(".newClass"+count).children("select").attr("name", "topping_id["+count+"]");
+  }
+  function removeNewList(){
+    $(".newClass"+count).remove();
+    count--;
+  }
+  </script>
 
 @endsection

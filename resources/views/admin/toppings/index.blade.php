@@ -7,40 +7,38 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          Shops
-          <a href="{{route('admin.pizzas.create')}}" class="btn btn-success float-right">Create a Pizza</a>
+          Toppings
+          <a href="{{route('admin.toppings.create')}}" class="btn btn-success float-right">Create a Topping</a>
         </div>
         <div class="card-body card-body2">
-        @if (count($pizzas) === 0)
-        <p> There are no pizzas</p>
+        @if (count($toppings) === 0)
+        <p> There are no toppings</p>
         @else
-        <table id="table-pizzas" class="table table-hover">
+        <table id="table-toppings" class="table table-hover">
           <thead>
             <th>Name</th>
-            <th>size</th>
-            <th>retailPrice</th>
-            <th>wholesalePrice</th>
+            <th>weight</th>
+            <th>price</th>
+            <th></th>
             <th></th>
 
           </thead>
 
           <tbody>
 
-            @foreach ($pizzas as $pizza)
+            @foreach ($toppings as $topping)
 
-              <tr data-id="{{$pizza->id}}">
-                <td>{{ $pizza->name }}</td>
-                <td>{{ $pizza->size }}</td>
-                <td>€{{ $pizza->retailPrice }}</td>
-                <td>€{{ $pizza->wholesalePrice }}</td>
+              <tr data-id="{{$topping->id}}">
+                <td>{{ $topping->name }}</td>
+                <td>{{ $topping->weightGm }} Gm</td>
+                <td>€{{ $topping->price }}</td>
                 <td></td>
 
                 <td>
                  <div class="float-right">
-                  <a href="{{ route('admin.pizzas.show', $pizza->id) }}" class="btn submit btn-primary" >View</a>
-                  <a href="{{ route('admin.pizzas.edit', $pizza->id) }}" class="btn btn-warning submit" value="edit" >Edit</a>
+                  <a href="{{ route('admin.toppings.edit', $topping->id) }}" class="btn btn-warning submit" value="edit" >Edit</a>
 
-                  <form style="display:inline-block" method="POST" action ="{{ route('admin.pizzas.destroy', $pizza->id) }}">
+                  <form style="display:inline-block" method="POST" action ="{{ route('admin.toppings.destroy', $topping->id) }}">
                     <input type="hidden" name="_method" value="DELETE">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div *ngIf="response" class="btn-group">

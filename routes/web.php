@@ -52,6 +52,15 @@ Route::delete('/admin/areas/{id}', [App\Http\Controllers\Admin\AreaController::c
 Route::get('/admin/pizzas', [App\Http\Controllers\Admin\PizzaController::class, 'index'])->name('admin.pizzas.index');
 Route::get('/admin/pizzas/create', [App\Http\Controllers\Admin\PizzaController::class, 'create'])->name('admin.pizzas.create');
 Route::post('/admin/pizzas/store', [App\Http\Controllers\Admin\PizzaController::class, 'store'])->name('admin.pizzas.store');
+Route::get('/admin/questions/{id}', [App\Http\Controllers\Admin\PizzaController::class, 'show'])->name('admin.pizzas.show');
 Route::get('/admin/pizzas/{id}/edit', [App\Http\Controllers\Admin\PizzaController::class, 'edit'])->name('admin.pizzas.edit');
 Route::put('/admin/pizzas/{id}', [App\Http\Controllers\Admin\PizzaController::class, 'update'])->name('admin.pizzas.update');
 Route::delete('/admin/pizzas/{id}', [App\Http\Controllers\Admin\PizzaController::class, 'destroy'])->name('admin.pizzas.destroy');
+
+//Admin Toppings
+Route::get('/admin/toppings', [App\Http\Controllers\Admin\ToppingController::class, 'index'])->name('admin.toppings.index');
+Route::get('/admin/toppings/create', [App\Http\Controllers\Admin\ToppingController::class, 'create'])->name('admin.toppings.create');
+Route::post('/admin/toppings/store', [App\Http\Controllers\Admin\ToppingController::class, 'store'])->name('admin.toppings.store');
+Route::get('/admin/toppings/{id}/edit', [App\Http\Controllers\Admin\ToppingController::class, 'edit'])->name('admin.toppings.edit');
+Route::put('/admin/toppings/{id}', [App\Http\Controllers\Admin\ToppingController::class, 'update'])->name('admin.toppings.update');
+Route::delete('/admin/toppings/{id}', [App\Http\Controllers\Admin\ToppingController::class, 'destroy'])->name('admin.toppings.destroy');

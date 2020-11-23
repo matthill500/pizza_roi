@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Pizza;
+use App\Models\Topping;
+use App\Models\PizzaTop;
 class PizzaController extends Controller
 {
     /**
@@ -34,7 +36,11 @@ class PizzaController extends Controller
      */
     public function create()
     {
-      return view('admin.pizzas.create');
+      $toppings = Topping::all();
+
+      return view('admin.pizzas.create')->with([
+        'toppings' => $toppings
+      ]);
     }
 
     /**
@@ -45,6 +51,7 @@ class PizzaController extends Controller
      */
     public function store(Request $request)
     {
+
       $request->validate([
       'name' => 'required|',
       'size' => 'required|',
@@ -59,6 +66,19 @@ class PizzaController extends Controller
       $pizza->wholesalePrice = $request->input('wholesalePrice');
       $pizza->save();
 
+      $toppings = $request->input('topping_id');
+      foreach($toppings as $topping){
+
+      $newTopping = Topping::findOrFail($topping);
+
+      $pizzaToppings = new PizzaTop();
+      $pizzaToppings->pizza_id = $pizza->id;
+      $pizzaToppings->topping_id = $newTopping->id;
+      $pizzaToppings->weightTopPerPieGm = 30;
+      $pizzaToppings->save();
+      }
+
+
       return redirect()->route('admin.pizzas.index');
     }
 
@@ -70,7 +90,11 @@ class PizzaController extends Controller
      */
     public function show($id)
     {
-        //
+      $pizza = Pizza::findOrFail($id);
+
+      return view('admin.pizzas.show')->with([
+        'pizza' => $pizza
+      ]);
     }
 
     /**
@@ -81,12 +105,13 @@ class PizzaController extends Controller
      */
     public function edit($id)
     {
-
       $pizza = Pizza::findOrFail($id);
-
+      $toppings = Topping::all();
       return view('admin.pizzas.edit')->with([
-        'pizza' => $pizza
+        'pizza' => $pizza,
+        'toppings'  => $toppings
       ]);
+
     }
 
     /**
@@ -114,8 +139,22 @@ class PizzaController extends Controller
 
       $pizza->save();
 
-      return redirect()->route('admin.pizzas.index');
+      $pizza->toppings()->detach();
 
+      $toppings = $request->input('topping_id');
+      foreach($toppings as $topping){
+
+      $newTopping = Topping::findOrFail($topping);
+
+
+      $pizzaToppings = new PizzaTop();
+      $pizzaToppings->pizza_id = $pizza->id;
+      $pizzaToppings->topping_id = $newTopping->id;
+      $pizzaToppings->weightTopPerPieGm = 30;
+      $pizzaToppings->save();
+      }
+
+      return redirect()->route('admin.pizzas.index');
     }
 
     /**

@@ -45,6 +45,10 @@
                       <li class="nav-item">
                           <a class="nav-link" href="{{ route('admin.pizzas.index') }}">{{ __('Pizzas') }}</a>
                       </li>
+
+                      <li class="nav-item">
+                          <a class="nav-link" href="{{ route('admin.toppings.index') }}">{{ __('Toppings') }}</a>
+                      </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

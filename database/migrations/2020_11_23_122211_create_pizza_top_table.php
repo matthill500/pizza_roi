@@ -20,8 +20,8 @@ class CreatePizzaTopTable extends Migration
             $table->float('weightTopPerPieGm');
             $table->timestamps();
 
-            $table->foreign('pizza_id')->references('id')->on('pizzas')->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign('topping_id')->references('id')->on('toppings')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign('pizza_id')->references('id')->on('pizzas')->onDelete('cascade');
+            $table->foreign('topping_id')->references('id')->on('toppings')->onDelete('cascade');
         });
     }
 
