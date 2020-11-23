@@ -48,13 +48,15 @@ class UserController extends Controller
     public function store(Request $request)
     {
       $request->validate([
-      'name' => 'required|',
+      'first_name' => 'required|',
+      'last_name' => 'required|',
       'email' => 'required|',
       'password' => 'required|'
       ]);
 
       $user = new User();
-      $user->name = $request->input('name');
+      $user->first_name = $request->input('first_name');
+      $user->last_name = $request->input('last_name');
       $user->email = $request->input('email');
       $user->password = Hash::make($request->input('password'));
       $user->save();
@@ -102,11 +104,13 @@ class UserController extends Controller
         $user = User::findOrFail($id);
 
         $request->validate([
-        'name' => 'required|',
+        'first_name' => 'required|',
+        'last_name' => 'required|',
         'email' => 'required|'
         ]);
 
-        $user->name = $request->input('name');
+        $user->first_name = $request->input('first_name');
+        $user->last_name = $request->input('last_name');
         $user->email = $request->input('email');
 
         $user->save();

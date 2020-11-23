@@ -29,7 +29,11 @@ class AreaController extends Controller
      */
     public function create()
     {
+        $shops = Shop::all();
 
+        return view('admin.areas.create')->with([
+          'shops' => $shops
+        ]);
     }
 
     /**
@@ -40,7 +44,19 @@ class AreaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $request->validate([
+      'area' => 'required|unique:areas',
+      'shop_id' => 'required|'
+      ]);
+
+      $area = new Area();
+
+      $area->area = $request->input('area');
+      $area->shop_id = $request->input('shop_id');
+
+      $area->save();
+
+      return redirect()->route('admin.areas.index');
     }
 
     /**

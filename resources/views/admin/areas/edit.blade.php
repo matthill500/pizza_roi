@@ -33,7 +33,7 @@
               <label for="shop">Shop</label>
               <select name="shop_id">
                 @foreach($shops as $shop)
-                  <option value="{{$shop->id}}" {{ (old('shop_id') == $shop->id) ? 'selected' : '' }} >
+                  <option value="{{$shop->id}}" {{ ($area->shop_id == $shop->id) ? 'selected' : '' }}>
                     {{$shop->name}}
                   </option>
                 @endforeach

@@ -47,3 +47,11 @@ Route::post('/admin/areas/store', [App\Http\Controllers\Admin\AreaController::cl
 Route::get('/admin/areas/{id}/edit', [App\Http\Controllers\Admin\AreaController::class, 'edit'])->name('admin.areas.edit');
 Route::put('/admin/areas/{id}', [App\Http\Controllers\Admin\AreaController::class, 'update'])->name('admin.areas.update');
 Route::delete('/admin/areas/{id}', [App\Http\Controllers\Admin\AreaController::class, 'destroy'])->name('admin.areas.destroy');
+
+//Admin Pizzas
+Route::get('/admin/pizzas', [App\Http\Controllers\Admin\PizzaController::class, 'index'])->name('admin.pizzas.index');
+Route::get('/admin/pizzas/create', [App\Http\Controllers\Admin\PizzaController::class, 'create'])->name('admin.pizzas.create');
+Route::post('/admin/pizzas/store', [App\Http\Controllers\Admin\PizzaController::class, 'store'])->name('admin.pizzas.store');
+Route::get('/admin/pizzas/{id}/edit', [App\Http\Controllers\Admin\PizzaController::class, 'edit'])->name('admin.pizzas.edit');
+Route::put('/admin/pizzas/{id}', [App\Http\Controllers\Admin\PizzaController::class, 'update'])->name('admin.pizzas.update');
+Route::delete('/admin/pizzas/{id}', [App\Http\Controllers\Admin\PizzaController::class, 'destroy'])->name('admin.pizzas.destroy');

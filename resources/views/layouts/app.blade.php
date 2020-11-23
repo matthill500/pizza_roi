@@ -15,6 +15,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="crossorigin="anonymous"></script>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -51,7 +52,7 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                                    {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -76,5 +77,29 @@
             @yield('content')
         </main>
     </div>
+
+    {{-- javascript code --}}
+    <script src="https://maps.google.com/maps/api/js?key=AIzaSyDxTV3a6oL6vAaRookXxpiJhynuUpSccjY&amp;libraries=places" type="text/javascript"></script>
+    <script>
+       $(document).ready(function() {
+
+       });
+    </script>
+    <script>
+       google.maps.event.addDomListener(window, 'load', initialize);
+
+       function initialize() {
+           var input = document.getElementById('autocomplete');
+           var autocomplete = new google.maps.places.Autocomplete(input);
+           autocomplete.addListener('place_changed', function() {
+               var place = autocomplete.getPlace();
+               console.log(place.address_components);
+               $('#number').val(place.address_components[0].long_name);
+               $('#roadOrStreet').val(place.address_components[1].long_name);
+               $('#area').val(place.address_components[2].long_name);
+               $('#eircode').val(place.address_components[6].long_name);
+           });
+       }
+    </script>
 </body>
 </html>

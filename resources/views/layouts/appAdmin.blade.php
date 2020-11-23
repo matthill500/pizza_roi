@@ -42,6 +42,9 @@
                       <li class="nav-item">
                           <a class="nav-link" href="{{ route('admin.areas.index') }}">{{ __('Areas') }}</a>
                       </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="{{ route('admin.pizzas.index') }}">{{ __('Pizzas') }}</a>
+                      </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -59,7 +62,7 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                                    {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

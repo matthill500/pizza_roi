@@ -14,12 +14,12 @@ class CustomerAddress extends Model
         'roadOrStreet',
         'area',
         'eircode',
-        'customerId',
+        'customer_id',
     ];
 
     public $table = "customer_address";
 
-    public function customers(){
+    public function customer(){
       return $this->belongsTo('App\Models\Customer');
     }
 }

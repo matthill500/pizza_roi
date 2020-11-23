@@ -49,14 +49,16 @@ class ShopController extends Controller
     public function store(Request $request)
     {
       $request->validate([
-      'name' => 'required|',
+      'first_name' => 'required|',
+      'last_name' => '',
       'shopCode' => 'required|',
       'email' => 'required|',
       'password' => 'required|'
       ]);
 
       $user = new User();
-      $user->name = $request->input('name');
+      $user->first_name = $request->input('first_name');
+      $user->last_name = $request->input('last_name');
       $user->email = $request->input('email');
       $user->password = Hash::make($request->input('password'));
       $user->save();
@@ -66,7 +68,7 @@ class ShopController extends Controller
       $user->roles()->attach(Role::where('name','shop')->first());
 
       $shop = new Shop();
-      $shop->name = $request->input('name');
+      $shop->name = $request->input('first_name');
       $shop->shopCode = $request->input('shopCode');
       $shop->user_id = $uId;
       $shop->save();

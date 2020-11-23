@@ -25,7 +25,7 @@
                 {{ csrf_field() }}
 
             <div class="form-group">
-              <label for="title">Name</label>
+              <label for="name">Name</label>
               <input type="text" class="form-control" id="name" name="name" value="{{old('name', $shop->name)}}" />
             </div>
 

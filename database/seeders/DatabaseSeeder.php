@@ -20,6 +20,9 @@ class DatabaseSeeder extends Seeder
         $this->call(CustomerAddressTableSeeder::class);
         $this->call(ShopsTableSeeder::class);
         $this->call(AreasTableSeeder::class);
+        $this->call(PizzasTableSeeder::class);
+        $this->call(ToppingsTableSeeder::class);
+        $this->call(PizzaTopTableSeeder::class);
 
     }
 }

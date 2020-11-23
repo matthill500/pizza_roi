@@ -19,21 +19,23 @@ class UsersTableSeeder extends Seeder
       $role_shop = Role::where('name', 'shop')->first();
 
       $admin = new User();
-      $admin->name='Matt Hill';
+      $admin->first_name='Matt';
+      $admin->last_name='Hill';
       $admin->email='admin@pizzaroi.ie';
       $admin->password= bcrypt('secret');
       $admin->save();
       $admin->roles()->attach($role_admin);
 
       $user = new User();
-      $user->name='john jones';
+      $user->first_name='John';
+      $user->last_name='Jones';
       $user->email='johnj@pizzaroi.ie';
       $user->password= bcrypt('secret');
       $user->save();
       $user->roles()->attach($role_user);
 
       $shop1 = new User();
-      $shop1->name='glenageary';
+      $shop1->first_name='Glenageary';
       $shop1->email='S27327@pizzaroi.ie';
       $shop1->password= bcrypt('secret');
       $shop1->save();
@@ -41,7 +43,7 @@ class UsersTableSeeder extends Seeder
 
 
       $shop2 = new User();
-      $shop2->name='dundrum';
+      $shop2->first_name='Dundrum';
       $shop2->email='S27311@pizzaroi.ie';
       $shop2->password= bcrypt('secret');
       $shop2->save();
@@ -49,7 +51,7 @@ class UsersTableSeeder extends Seeder
 
 
       $shop3 = new User();
-      $shop3->name='leopardstown';
+      $shop3->first_name='Leopardstown';
       $shop3->email='S27344@pizzaroi.ie';
       $shop3->password= bcrypt('secret');
       $shop3->save();

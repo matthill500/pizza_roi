@@ -53,7 +53,8 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'phone' => ['required', 'string', 'min:8', 'max:13'],
             'age' => ['required','date'],
@@ -74,10 +75,13 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $user = User::create([
-            'name' => $data['name'],
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        $user->roles()->attach(Role::where('name','user')->first());
 
         $uId = $user->id;
 
@@ -87,9 +91,9 @@ class RegisterController extends Controller
           'user_id' => $uId,
         ]);
 
-
-
         $cId = $customer->id;
+
+
 
         $address = CustomerAddress::create([
           'number' => $data['number'],
@@ -99,7 +103,7 @@ class RegisterController extends Controller
           'customer_id' => $cId,
         ]);
 
-        $user->roles()->attach(Role::where('name','user')->first());
+
 
         return $user;
     }

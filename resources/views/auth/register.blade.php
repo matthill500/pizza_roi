@@ -10,14 +10,29 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
-
+                      <div class="personalDetails" style="border:2px solid lightgrey; border-radius:10px; margin-bottom:2em;">
+                        <h5 style="padding:10px;"><b>Personal Details</b></h5>
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <label for="first_name" class="col-md-4 col-form-label text-md-right">{{ __('First name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <input id="first_name" type="text" class="form-control @error('first_name') is-invalid @enderror" name="first_name" value="{{ old('first_name') }}" required autocomplete="first_name" autofocus>
 
-                                @error('name')
+                                @error('first_name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="last_name" class="col-md-4 col-form-label text-md-right">{{ __('Last name') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="last_name" type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name" value="{{ old('last_name') }}" required autocomplete="last_name" autofocus>
+
+                                @error('last_name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -66,8 +81,17 @@
                                 @enderror
                             </div>
                         </div>
-
+                      </div>
+                      <div class="address" style="border:2px solid lightgrey; border-radius:10px; margin-bottom:2em;">
+                          <h5 style="padding:10px;"><b>Address</b></h5>
                         <div class="form-group row">
+                            <label for="autocomplete" class="col-md-4 col-form-label text-md-right"> Address Search </label>
+                          <div class="col-md-6">
+                            <input type="text" name="autocomplete" id="autocomplete" class="form-control" placeholder="Search Location">
+                          </div>
+                        </div>
+
+                        <div class="form-group row" id="address1">
                             <label for="number" class="col-md-4 col-form-label text-md-right">{{ __('House/Apartment Number') }}</label>
 
                             <div class="col-md-6">
@@ -80,7 +104,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group row" id="address2">
                             <label for="roadOrStreet" class="col-md-4 col-form-label text-md-right">{{ __('Road or Street') }}</label>
 
                             <div class="col-md-6">
@@ -94,7 +118,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group row" id="address3">
                             <label for="area" class="col-md-4 col-form-label text-md-right">{{ __('Area') }}</label>
 
                             <div class="col-md-6">
@@ -108,7 +132,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group row" id="address4">
                             <label for="eircode" class="col-md-4 col-form-label text-md-right">{{ __('Eircode') }}</label>
 
                             <div class="col-md-6">
@@ -121,6 +145,10 @@
                                 @enderror
                             </div>
                         </div>
+                      </div>
+
+                      <div class="address" style="border:2px solid lightgrey; border-radius:10px; margin-bottom:2em;">
+                          <h5 style="padding:10px;"><b>Password</b></h5>
 
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
@@ -144,6 +172,7 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
+                      </div>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
@@ -158,4 +187,6 @@
         </div>
     </div>
 </div>
+
+
 @endsection

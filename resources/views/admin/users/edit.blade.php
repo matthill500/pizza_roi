@@ -25,8 +25,13 @@
                 {{ csrf_field() }}
 
             <div class="form-group">
-              <label for="title">Name</label>
-              <input type="text" class="form-control" id="name" name="name" value="{{old('name', $user->name)}}" />
+              <label for="first_name">First name</label>
+              <input type="text" class="form-control" id="first_name" name="first_name" value="{{old('first_name', $user->first_name)}}" />
+            </div>
+
+            <div class="form-group">
+              <label for="last_name">Last name</label>
+              <input type="text" class="form-control" id="last_name" name="last_name" value="{{old('last_name', $user->last_name)}}" />
             </div>
 
             <div class="form-group">
