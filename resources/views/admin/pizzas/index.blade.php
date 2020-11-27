@@ -21,6 +21,7 @@
             <th>retailPrice</th>
             <th>wholesalePrice</th>
             <th></th>
+            <th></th>
 
           </thead>
 
@@ -32,7 +33,8 @@
                 <td>{{ $pizza->name }}</td>
                 <td>{{ $pizza->size }}</td>
                 <td>€{{ $pizza->retailPrice }}</td>
-                <td>€{{ $pizza->wholesalePrice }}</td>
+                <?php $total = 0; ?>
+                <td>@foreach($pizza->toppings as $topping) <?php $total += $topping->price ?> @endforeach €{{$total}}</td>
                 <td></td>
 
                 <td>

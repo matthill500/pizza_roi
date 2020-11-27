@@ -18,7 +18,6 @@ class CreatePizzasTable extends Migration
             $table->string('name');
             $table->double('size', 3, 1);
             $table->float('retailPrice');
-            $table->float('wholesalePrice');
             $table->timestamps();
         });
     }

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Pizza;
+use App\Models\Topping;
 class PizzasTableSeeder extends Seeder
 {
     /**
@@ -13,28 +14,23 @@ class PizzasTableSeeder extends Seeder
      */
     public function run()
     {
+      $top1 = Topping::where('name', 'pepperoni 13.5"')->first();
+      $top2 = Topping::where('name', 'cheese 13.5"')->first();
+      $top3 = Topping::where('name', 'Pizza sauce 13.5"')->first();
+      $top4 = Topping::where('name', 'dough 13.5"')->first();
+
       $largePepperoniPassion = new Pizza();
       $largePepperoniPassion->name='Pepperoni Passion';
       $largePepperoniPassion->size=13.5;
       $largePepperoniPassion->retailPrice=22;
-      $largePepperoniPassion->wholesalePrice=3;
 
       $largePepperoniPassion->save();
 
-      $mediumPepperoniPassion = new Pizza();
-      $mediumPepperoniPassion->name='Pepperoni Passion';
-      $mediumPepperoniPassion->size=11.5;
-      $mediumPepperoniPassion->retailPrice=17;
-      $mediumPepperoniPassion->wholesalePrice=2;
+      $largePepperoniPassion->toppings()->attach($top1);
+      $largePepperoniPassion->toppings()->attach($top2);
+      $largePepperoniPassion->toppings()->attach($top3);
+      $largePepperoniPassion->toppings()->attach($top4);
 
-      $mediumPepperoniPassion->save();
 
-      $smallPepperoniPassion = new Pizza();
-      $smallPepperoniPassion->name='Pepperoni Passion';
-      $smallPepperoniPassion->size=9.5;
-      $smallPepperoniPassion->retailPrice=12;
-      $smallPepperoniPassion->wholesalePrice=1;
-
-      $smallPepperoniPassion->save();
     }
 }

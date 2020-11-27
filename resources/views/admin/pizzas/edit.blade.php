@@ -7,12 +7,6 @@
       <div class="card">
         <div class="card-header">
           Edit Pizza
-          <button class="btn btn-danger float-right" onclick="removeNewList()" style="margin-left:0.5em;">
-            Remove topping option
-          </button>
-          <button class="btn btn-success float-right" onclick="addNewList()">
-            Add topping option
-          </button>
         </div>
         <div class="card-body">
           @if ($errors->any())
@@ -59,29 +53,42 @@
               <input type="float" class="form-control" id="retailPrice" name="retailPrice" value="{{old('retailPrice', $pizza->retailPrice)}}" />
             </div>
 
-            <div class="form-group">
-              <label for="wholesalePrice">Wholesale Price</label>
-              <input type="float" class="form-control" id="wholesalePrice" name="wholesalePrice" value="{{old('wholesalePrice', $pizza->wholesalePrice)}}" />
-            </div>
 
+            <div class="form-group" style="margin-bottom:-0.2em;">
 
-            <div class="form-group">
-              Current toppings: <br><h2>@foreach($pizza->toppings as $pTopping){{$pTopping->name}} @endforeach</h2>
               New Toppings:<br>
+              <div style="margin-left:9em;">
+                Add
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-square " style="color:green" onclick="addNewList()" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                  <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+               </svg>
+               Remove
+               <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-dash-square " style="color:red" onclick="removeNewList()" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+              </svg>
+            </div>
               <div class="col-md-6 list">
+                <?php $count = 0; ?>
+                @foreach ($pizza->toppings as $pTopping)
+                <div class="count<?php echo $count ?>">
                <label for="topping" class="col-md-4 col-form-label text-md-right" style="margin-bottom:0.2em;">Topping</label>
-               <select name="topping_id[0]">
+               <select name="topping_id[<?php echo $count ?>]">
                  @foreach ($toppings as $topping)
-                   <option value="{{$topping->id}}">
+                   <option value="{{$topping->id}}" {{ ($pTopping->name == $topping->name) ? 'selected' : '' }}>
                      {{$topping->name}}
                    </option>
                    @endforeach
                </select>
                <br>
+             </div>
+               <?php $count++; ?>
+               @endforeach
               </div>
             </div>
 
-            <div class="form-group listRow"></div>
+            <div class="form-group listRow" style="margin-left:-9em;"></div>
 
             <a href="{{route('admin.pizzas.index')}}" class="btn btn-danger">Cancel</a>
             <button type="submit" class="btn btn-primary float-right">Submit</button>
@@ -94,15 +101,29 @@
 </div>
 
 <script>
-var count = 0;
+var count = <?php echo $count; ?>;
 function addNewList(){
-  count++;
-  $(".list").clone().removeClass('list').addClass('newClass'+count).appendTo(".listRow");
-  $(".newClass"+count).children("select").attr("name", "topping_id["+count+"]");
+var newElems = $('<div class="count'+count+'"><label for="topping" class="col-md-4 col-form-label text-md-right" style="margin-bottom:0.2em;">Topping</label><select name="topping_id['+count+']"> @foreach ($toppings as $topping)<option value="{{$topping->id}}">{{$topping->name}}</option>@endforeach</select></br></div>');
+$('.listRow').append(newElems);
+count++;
+
 }
+
 function removeNewList(){
-  $(".newClass"+count).remove();
   count--;
+  console.log(count);
+  $(".count"+count).remove();
 }
+// var count = 0;
+// function addNewList(){
+//   count++;
+//
+//    $(".list").clone().removeClass('list').addClass('newClass'+count).appendTo(".listRow");
+//    $(".newClass"+count).children("select").attr("name", "topping_id["+count+"]");
+// }
+// function removeNewList(){
+//   $(".newClass"+count).remove();
+//   count--;
+// }
 </script>
 @endsection

@@ -47,13 +47,15 @@ class ToppingController extends Controller
     {
       $request->validate([
       'name' => 'required|',
-      'weightGm' => 'required|regex:/^[0-9.]+$/',
+      'pieSize' => 'required|',
+      'weightPerPieGm' => 'regex:/^[0-9.]+$/',
       'price' => 'required|regex:/^[0-9.]+$/'
       ]);
 
       $topping = new Topping();
       $topping->name = $request->input('name');
-      $topping->weightGm = $request->input('weightGm');
+      $topping->pieSize = $request->input('pieSize');
+      $topping->weightPerPieGm = $request->input('weightPerPieGm');
       $topping->price = $request->input('price');
 
       $topping->save();
@@ -100,12 +102,14 @@ class ToppingController extends Controller
 
       $request->validate([
         'name' => 'required|',
-        'weightGm' => 'required|',
+        'pieSize' => 'required|',
+        'weightPerPieGm' => '',
         'price' => 'required|'
       ]);
 
       $topping->name = $request->input('name');
-      $topping->weightGm = $request->input('weightGm');
+      $topping->pieSize = $request->input('pieSize');
+      $topping->weightPerPieGm = $request->input('weightPerPieGm');
       $topping->price = $request->input('price');
 
       $topping->save();

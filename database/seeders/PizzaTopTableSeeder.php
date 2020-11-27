@@ -18,21 +18,24 @@ class PizzaTopTableSeeder extends Seeder
       $passion = new PizzaTop();
       $passion->pizza_id=1;
       $passion->topping_id=1;
-      $passion->weightTopPerPieGm=20;
 
       $passion->save();
 
       $passion = new PizzaTop();
-      $passion->pizza_id=2;
-      $passion->topping_id=1;
-      $passion->weightTopPerPieGm=20;
+      $passion->pizza_id=1;
+      $passion->topping_id=2;
 
       $passion->save();
 
       $passion = new PizzaTop();
-      $passion->pizza_id=3;
-      $passion->topping_id=1;
-      $passion->weightTopPerPieGm=20;
+      $passion->pizza_id=1;
+      $passion->topping_id=3;
+
+      $passion->save();
+
+      $passion = new PizzaTop();
+      $passion->pizza_id=1;
+      $passion->topping_id=4;
 
       $passion->save();
     }

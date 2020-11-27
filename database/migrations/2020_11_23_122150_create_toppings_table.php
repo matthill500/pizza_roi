@@ -16,7 +16,8 @@ class CreateToppingsTable extends Migration
         Schema::create('toppings', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->float('weightGm');
+            $table->double('pieSize',3 ,1);
+            $table->float('weightPerPieGm')->nullable();
             $table->float('price');
             $table->timestamps();
         });

@@ -6,7 +6,7 @@
     <div class="col-md-8 col-md-offset-2">
       <div class="card">
         <div class="card-header">
-          Edit Shop
+          Edit Topping
         </div>
         <div class="card-body">
           @if ($errors->any())
@@ -30,12 +30,31 @@
             </div>
 
             <div class="form-group">
-              <label for="weightGm">Weight</label>
-              <input type="float" class="form-control" id="weightGm" name="weightGm" value="{{old('weightGm', $topping->weightGm)}}" />
+              <label for="size">Pie size</label>
+              <select name="pieSize">
+                @if ($topping->pieSize == 13.5)
+                  <option value="13.5" selected="selected">13.5</option>
+                  <option value="11.5">11.5</option>
+                  <option value="9.5">9.5</option>
+                @elseif ($topping->pieSize == 11.5)
+                  <option value="13.5">13.5</option>
+                  <option value="11.5" selected="selected">11.5</option>
+                  <option value="9.5">9.5</option>
+                @elseif ($topping->pieSize == 9.5)
+                  <option value="13.5">13.5</option>
+                    <option value="11.5">11.5</option>
+                  <option value="9.5" selected="selected">9.5</option>
+                @endif
+              </select>
             </div>
 
             <div class="form-group">
-              <label for="price">Price</label>
+              <label for="weightPerPieGm">Weight Per Pie (Grams)</label>
+              <input type="float" class="form-control" id="weightPerPieGm" name="weightPerPieGm" value="{{old('weightPerPieGm', $topping->weightPerPieGm)}}" />
+            </div>
+
+            <div class="form-group">
+              <label for="price">Price (€)</label>
               <input type="float" class="form-control" id="price" name="price" value="{{old('price', $topping->price)}}" />
             </div>
 

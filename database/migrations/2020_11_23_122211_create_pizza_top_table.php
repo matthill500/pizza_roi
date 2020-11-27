@@ -17,7 +17,6 @@ class CreatePizzaTopTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('pizza_id')->unsigned();
             $table->biginteger('topping_id')->unsigned();
-            $table->float('weightTopPerPieGm');
             $table->timestamps();
 
             $table->foreign('pizza_id')->references('id')->on('pizzas')->onDelete('cascade');

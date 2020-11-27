@@ -37,12 +37,24 @@
 
 
                 <div class="form-group row">
-                    <label for="weightGm" class="col-md-4 col-form-label text-md-right">{{ __('Weight') }}</label>
+                    <label for="pieSize" class="col-md-4 col-form-label text-md-right">{{ __('Pie size') }}</label>
 
                     <div class="col-md-6">
-                        <input id="weightGm" type="float" class="form-control @error('weightGm') is-invalid @enderror" name="weightGm" value="{{ old('weightGm') }}" required autocomplete="weightGm">
+                      <select name="pieSize">
+                          <option value="13.5">13.5</option>
+                          <option value="11.5">11.5</option>
+                          <option value="9.5">9.5</option>
+                      </select>
+                    </div>
+                </div>
 
-                        @error('weightGm')
+                <div class="form-group row">
+                    <label for="weightPerPieGm" class="col-md-4 col-form-label text-md-right">{{ __('Weight Per Pie (Grams)') }}</label>
+
+                    <div class="col-md-6">
+                        <input id="weightPerPieGm" type="float" class="form-control @error('weightPerPieGm') is-invalid @enderror" name="weightPerPieGm" value="{{ old('weightPerPieGm') }}" required autocomplete="weightPerPieGm">
+
+                        @error('weightPerPieGm')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -51,7 +63,7 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="price" class="col-md-4 col-form-label text-md-right">{{ __('Price') }}</label>
+                    <label for="price" class="col-md-4 col-form-label text-md-right">{{ __('Price (€)') }}</label>
 
                     <div class="col-md-6">
                         <input id="price" type="float" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" required autocomplete="price">

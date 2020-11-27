@@ -55,15 +55,13 @@ class PizzaController extends Controller
       $request->validate([
       'name' => 'required|',
       'size' => 'required|',
-      'retailPrice' => 'required|',
-      'wholesalePrice' => 'required|'
+      'retailPrice' => 'required|'
       ]);
 
       $pizza = new Pizza();
       $pizza->name = $request->input('name');
       $pizza->size = $request->input('size');
       $pizza->retailPrice = $request->input('retailPrice');
-      $pizza->wholesalePrice = $request->input('wholesalePrice');
       $pizza->save();
 
       $toppings = $request->input('topping_id');
@@ -71,13 +69,8 @@ class PizzaController extends Controller
 
       $newTopping = Topping::findOrFail($topping);
 
-      $pizzaToppings = new PizzaTop();
-      $pizzaToppings->pizza_id = $pizza->id;
-      $pizzaToppings->topping_id = $newTopping->id;
-      $pizzaToppings->weightTopPerPieGm = 30;
-      $pizzaToppings->save();
+      $newTopping->pizzas()->attach(Pizza::where('name', $pizza->name)->first());
       }
-
 
       return redirect()->route('admin.pizzas.index');
     }
@@ -128,14 +121,12 @@ class PizzaController extends Controller
       $request->validate([
         'name' => 'required|',
         'size' => 'required|',
-        'retailPrice' => 'required|',
-        'wholesalePrice' => 'required|'
+        'retailPrice' => 'required|'
       ]);
 
       $pizza->name = $request->input('name');
       $pizza->size = $request->input('size');
       $pizza->retailPrice = $request->input('retailPrice');
-      $pizza->wholesalePrice = $request->input('wholesalePrice');
 
       $pizza->save();
 
@@ -147,11 +138,7 @@ class PizzaController extends Controller
       $newTopping = Topping::findOrFail($topping);
 
 
-      $pizzaToppings = new PizzaTop();
-      $pizzaToppings->pizza_id = $pizza->id;
-      $pizzaToppings->topping_id = $newTopping->id;
-      $pizzaToppings->weightTopPerPieGm = 30;
-      $pizzaToppings->save();
+      $newTopping->pizzas()->attach(Pizza::where('name', $pizza->name)->first());
       }
 
       return redirect()->route('admin.pizzas.index');

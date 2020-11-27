@@ -17,7 +17,8 @@
         <table id="table-toppings" class="table table-hover">
           <thead>
             <th>Name</th>
-            <th>weight</th>
+            <th>Pie Size</th>
+            <th>Weight Per Pie</th>
             <th>price</th>
             <th></th>
             <th></th>
@@ -30,7 +31,8 @@
 
               <tr data-id="{{$topping->id}}">
                 <td>{{ $topping->name }}</td>
-                <td>{{ $topping->weightGm }} Gm</td>
+                <td>{{ $topping->pieSize }}</td>
+                <td>{{ $topping->weightPerPieGm }} Gm</td>
                 <td>€{{ $topping->price }}</td>
                 <td></td>
 

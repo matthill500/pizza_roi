@@ -25,15 +25,18 @@
               <td>{{ $pizza->retailPrice }}</td>
             </tr>
             <tr>
+              <?php $total = 0; ?>
               <td>Wholesale Price</td>
-              <td>{{ $pizza->wholesalePrice }}</td>
+              <td>@foreach($pizza->toppings as $topping) <?php $total += $topping->price ?> @endforeach €{{$total}}</td>
             </tr>
             <tr>
               <td>Toppings</td>
               <td>
-              @foreach ($pizza->toppings as $topping)
-              {{ $topping->name}}       
-              @endforeach
+                <ul>
+                  @foreach ($pizza->toppings as $topping)
+                    <li>{{ $topping->name}}</li>
+                  @endforeach
+                </ul>
               </td>
             </tr>
 
