@@ -13,4 +13,9 @@ class Pizza extends Model
     {
         return $this->belongsToMany('App\Models\Topping', 'pizza_tops');
     }
+
+    public function deals()
+    {
+        return $this->belongsToMany('App\Models\Deal', 'deal_pizza');
+    }
 }

@@ -22,6 +22,8 @@ class DatabaseSeeder extends Seeder
         $this->call(AreasTableSeeder::class);
         $this->call(ToppingsTableSeeder::class);
         $this->call(PizzasTableSeeder::class);
+        $this->call(SidesTableSeeder::class);
+        $this->call(DealsTableSeeder::class);
 
 
     }

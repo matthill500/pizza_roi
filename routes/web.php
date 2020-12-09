@@ -64,3 +64,20 @@ Route::post('/admin/toppings/store', [App\Http\Controllers\Admin\ToppingControll
 Route::get('/admin/toppings/{id}/edit', [App\Http\Controllers\Admin\ToppingController::class, 'edit'])->name('admin.toppings.edit');
 Route::put('/admin/toppings/{id}', [App\Http\Controllers\Admin\ToppingController::class, 'update'])->name('admin.toppings.update');
 Route::delete('/admin/toppings/{id}', [App\Http\Controllers\Admin\ToppingController::class, 'destroy'])->name('admin.toppings.destroy');
+
+//Admin Sides
+Route::get('/admin/sides', [App\Http\Controllers\Admin\SideController::class, 'index'])->name('admin.sides.index');
+Route::get('/admin/sides/create', [App\Http\Controllers\Admin\SideController::class, 'create'])->name('admin.sides.create');
+Route::post('/admin/sides/store', [App\Http\Controllers\Admin\SideController::class, 'store'])->name('admin.sides.store');
+Route::get('/admin/sides/{id}/edit', [App\Http\Controllers\Admin\SideController::class, 'edit'])->name('admin.sides.edit');
+Route::put('/admin/sides/{id}', [App\Http\Controllers\Admin\SideController::class, 'update'])->name('admin.sides.update');
+Route::delete('/admin/sides/{id}', [App\Http\Controllers\Admin\SideController::class, 'destroy'])->name('admin.sides.destroy');
+
+//Admin Deals
+Route::get('/admin/deals', [App\Http\Controllers\Admin\DealController::class, 'index'])->name('admin.deals.index');
+Route::get('/admin/deals/create', [App\Http\Controllers\Admin\DealController::class, 'create'])->name('admin.deals.create');
+Route::post('/admin/deals/store', [App\Http\Controllers\Admin\DealController::class, 'store'])->name('admin.deals.store');
+Route::get('/admin/deals/{id}', [App\Http\Controllers\Admin\DealController::class, 'show'])->name('admin.deals.show');
+Route::get('/admin/deals/{id}/edit', [App\Http\Controllers\Admin\DealController::class, 'edit'])->name('admin.deals.edit');
+Route::put('/admin/deals/{id}', [App\Http\Controllers\Admin\DealController::class, 'update'])->name('admin.deals.update');
+Route::delete('/admin/deals/{id}', [App\Http\Controllers\Admin\DealController::class, 'destroy'])->name('admin.deals.destroy');
