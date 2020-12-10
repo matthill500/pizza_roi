@@ -9,6 +9,8 @@ class Deal extends Model
 {
     use HasFactory;
 
+
+
     public function sides()
     {
         return $this->belongsToMany('App\Models\Side', 'deal_side');

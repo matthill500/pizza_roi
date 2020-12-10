@@ -55,8 +55,8 @@ class DealController extends Controller
     $request->validate([
     'name' => 'required|',
     'retailPrice' => 'required|',
-    'pizza' => 'unique:pizza',
-    'side' => 'unique:side'
+    'pizza' => '',
+    'side' => ''
     ]);
 
     $deal = new Deal();
@@ -134,8 +134,8 @@ class DealController extends Controller
       $request->validate([
         'name' => 'required|',
         'retailPrice' => 'required|',
-        'pizza' => 'unique:Pizzas',
-        'side' => 'unique:Sides'
+        'pizza' => '',
+        'side' => ''
 
       ]);
 

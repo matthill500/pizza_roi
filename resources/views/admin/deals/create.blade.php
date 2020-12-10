@@ -135,11 +135,11 @@
   var count2 = 0;
   function addNewList2(){
     count2++;
-    $(".list2").clone().removeClass('list2').addClass('newClass'+count2).appendTo(".listRow2");
-    $(".newClass"+count2).children("select").attr("name", "side_id["+count2+"]");
+    $(".list2").clone().removeClass('list2').addClass('newClass2'+count2).appendTo(".listRow2");
+    $(".newClass2"+count2).children("select").attr("name", "side_id["+count2+"]");
   }
   function removeNewList2(){
-    $(".newClass"+count2).remove();
+    $(".newClass2"+count2).remove();
     count2--;
   }
   </script>
