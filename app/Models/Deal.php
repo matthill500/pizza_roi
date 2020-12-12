@@ -20,4 +20,9 @@ class Deal extends Model
     {
         return $this->belongsToMany('App\Models\Pizza', 'deal_pizza');
     }
+
+    public function orders()
+    {
+        return $this->belongsToMany('App\Models\Order', 'order_item');
+    }
 }

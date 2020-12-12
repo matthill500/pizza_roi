@@ -13,4 +13,9 @@ class Side extends Model
     {
         return $this->belongsToMany('App\Models\Deal', 'deal_side');
     }
+
+    public function orders()
+    {
+        return $this->belongsToMany('App\Models\Order', 'order_item');
+    }
 }
