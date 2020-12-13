@@ -19,6 +19,7 @@ class DealController extends Controller
          $this->middleware('auth');
          $this->middleware('role:admin');
      }
+     
     public function index()
     {
       $deals = Deal::all();

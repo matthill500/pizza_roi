@@ -15,6 +15,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="crossorigin="anonymous"></script>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -34,32 +35,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                       <li class="nav-item">
-                          <a class="nav-link" href="{{ route('admin.users.index') }}">{{ __('Users') }}</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="{{ route('admin.shops.index') }}">{{ __('Shops') }}</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="{{ route('admin.areas.index') }}">{{ __('Areas') }}</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="{{ route('admin.pizzas.index') }}">{{ __('Pizzas') }}</a>
-                      </li>
-
-                      <li class="nav-item">
-                          <a class="nav-link" href="{{ route('admin.toppings.index') }}">{{ __('Toppings') }}</a>
-                      </li>
-
-                      <li class="nav-item">
-                          <a class="nav-link" href="{{ route('admin.sides.index') }}">{{ __('Sides') }}</a>
-                      </li>
-
-                      <li class="nav-item">
-                          <a class="nav-link" href="{{ route('admin.deals.index') }}">{{ __('Deals') }}</a>
-                      </li>
-
-                      <li class="nav-item">
-                          <a class="nav-link" href="{{ route('admin.orders.index') }}">{{ __('Orders') }}</a>
+                          <a class="nav-link" href="{{ route('shop.orders.index') }}">{{ __('Orders') }}</a>
                       </li>
                     </ul>
 
@@ -103,5 +79,29 @@
             @yield('content')
         </main>
     </div>
+
+    {{-- javascript code --}}
+    <script src="https://maps.google.com/maps/api/js?key=AIzaSyDxTV3a6oL6vAaRookXxpiJhynuUpSccjY&amp;libraries=places" type="text/javascript"></script>
+    <script>
+       $(document).ready(function() {
+
+       });
+    </script>
+    <script>
+       google.maps.event.addDomListener(window, 'load', initialize);
+
+       function initialize() {
+           var input = document.getElementById('autocomplete');
+           var autocomplete = new google.maps.places.Autocomplete(input);
+           autocomplete.addListener('place_changed', function() {
+               var place = autocomplete.getPlace();
+               console.log(place.address_components);
+               $('#number').val(place.address_components[0].long_name);
+               $('#roadOrStreet').val(place.address_components[1].long_name);
+               $('#area').val(place.address_components[2].long_name);
+               $('#eircode').val(place.address_components[6].long_name);
+           });
+       }
+    </script>
 </body>
 </html>

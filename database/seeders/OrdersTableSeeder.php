@@ -34,5 +34,17 @@ class OrdersTableSeeder extends Seeder
       $order->sides()->attach($side);
       $order->deals()->attach($deal);
 
+      $order2 = new Order();
+      $order2->status = 'confirmed';
+      $order2->comments = '';
+      $order2->price = '42';
+      $order2->shop_id = 2;
+      $order2->customer_id = 1;
+      $order2->save();
+
+      $order2->pizzas()->attach($pizza);
+      $order2->sides()->attach($side);
+
+
     }
 }

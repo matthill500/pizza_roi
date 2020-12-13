@@ -81,3 +81,13 @@ Route::get('/admin/deals/{id}', [App\Http\Controllers\Admin\DealController::clas
 Route::get('/admin/deals/{id}/edit', [App\Http\Controllers\Admin\DealController::class, 'edit'])->name('admin.deals.edit');
 Route::put('/admin/deals/{id}', [App\Http\Controllers\Admin\DealController::class, 'update'])->name('admin.deals.update');
 Route::delete('/admin/deals/{id}', [App\Http\Controllers\Admin\DealController::class, 'destroy'])->name('admin.deals.destroy');
+
+//Admin Orders
+Route::get('/admin/orders', [App\Http\Controllers\Admin\OrderController::class, 'index'])->name('admin.orders.index');
+Route::get('/admin/orders/{id}', [App\Http\Controllers\Admin\OrderController::class, 'show'])->name('admin.orders.show');
+Route::delete('/admin/orders/{id}', [App\Http\Controllers\Admin\OrderController::class, 'destroy'])->name('admin.orders.destroy');
+
+//Shop Orders
+Route::get('/shop/orders', [App\Http\Controllers\Shop\OrderController::class, 'index'])->name('shop.orders.index');
+Route::get('/shop/orders/{id}', [App\Http\Controllers\Shop\OrderController::class, 'show'])->name('shop.orders.show');
+Route::delete('/shop/orders/{id}', [App\Http\Controllers\Shop\OrderController::class, 'destroy'])->name('shop.orders.destroy');

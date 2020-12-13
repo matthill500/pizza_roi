@@ -11,7 +11,7 @@ class Order extends Model
 
     public function coupon()
     {
-        return $this->hasOne('App\Models\Coupon');
+        return $this->belongsTo('App\Models\Coupon');
     }
 
     public function deals()
@@ -31,12 +31,12 @@ class Order extends Model
 
     public function shop()
     {
-        return $this->hasOne('App\Models\Shop');
+        return $this->belongsTo('App\Models\Shop');
     }
 
     public function customer()
     {
-        return $this->hasOne('App\Models\Customer');
+        return $this->belongsTo('App\Models\Customer');
     }
 
 }
