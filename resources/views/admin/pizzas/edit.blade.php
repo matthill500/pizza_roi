@@ -18,7 +18,7 @@
             </ul>
           </div>
           @endif
-          <form method="POST" action="{{route('admin.pizzas.update', $pizza->id)}}">
+          <form method="POST" action="{{route('admin.pizzas.update', $pizza->id)}}" enctype="multipart/form-data">
 
             <input type="hidden" name="_method" value ="PUT">
             <input type="hidden" name="_token">
@@ -52,6 +52,14 @@
               <label for="retailPrice">Retail Price</label>
               <input type="float" class="form-control" id="retailPrice" name="retailPrice" value="{{old('retailPrice', $pizza->retailPrice)}}" />
             </div>
+
+            <div class="form-group row">
+                <label for="address" class="col-md-4 col-form-label text-md-right">Image</label>
+                  <div class="custom-file col-md-6">
+              <input type="file" name="image" class="custom-file-input {{$errors->has('image') ? 'is-invalid' : ''}}" id="image">
+              <label class="custom-file-label" for="image">Pizza Image</label>
+            </div>
+          </div>
 
 
             <div class="form-group" style="margin-bottom:-0.2em;">

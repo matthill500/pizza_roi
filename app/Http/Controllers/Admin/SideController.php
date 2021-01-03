@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Side;
+use Storage;
 class SideController extends Controller
 {
     /**
@@ -48,13 +49,23 @@ class SideController extends Controller
       $request->validate([
       'name' => 'required|',
       'retailPrice' => 'required|',
-      'wholesalePrice' => 'required|'
+      'wholesalePrice' => 'required|',
+      'image' => 'nullable|image|max:1999'
       ]);
 
       $side = new Side();
       $side->name = $request->input('name');
       $side->retailPrice = $request->input('retailPrice');
       $side->wholesalePrice = $request->input('wholesalePrice');
+
+      if($request->hasFile('image')){
+      $image = $request->image;
+      $ext = $image->getClientOriginalExtension();
+      $filename = uniqid().'.'.$ext;
+      $image->storeAs('public/images',$filename);
+      Storage::delete("public/images/{$side->image}");
+      $side->image = 'storage/images/'.$filename;
+      }
 
       $side->save();
 
@@ -102,12 +113,22 @@ class SideController extends Controller
       $request->validate([
       'name' => 'required|',
       'retailPrice' => 'required|',
-      'wholesalePrice' => 'required|'
+      'wholesalePrice' => 'required|',
+      'image' => 'nullable|image|max:1999'
       ]);
 
       $side->name = $request->input('name');
       $side->retailPrice = $request->input('retailPrice');
       $side->wholesalePrice = $request->input('wholesalePrice');
+
+      if($request->hasFile('image')){
+      $image = $request->image;
+      $ext = $image->getClientOriginalExtension();
+      $filename = uniqid().'.'.$ext;
+      $image->storeAs('public/images',$filename);
+      Storage::delete("public/images/{$side->image}");
+      $side->image = 'storage/images/'.$filename;
+      }
 
       $side->save();
 

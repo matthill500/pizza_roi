@@ -18,7 +18,7 @@
             </ul>
           </div>
           @endif
-          <form method="POST" action="{{route('admin.sides.update', $side->id)}}">
+          <form method="POST" action="{{route('admin.sides.update', $side->id)}}" enctype="multipart/form-data">
 
             <input type="hidden" name="_method" value ="PUT">
             <input type="hidden" name="_token">
@@ -38,6 +38,14 @@
               <label for="last_name">Whole Price</label>
               <input type="text" class="form-control" id="wholesalePrice" name="wholesalePrice" value="{{old('wholesalePrice', $side->wholesalePrice)}}" />
             </div>
+
+            <div class="form-group row">
+                <label for="address" class="col-md-4 col-form-label text-md-right">Image</label>
+                  <div class="custom-file col-md-6">
+              <input type="file" name="image" class="custom-file-input {{$errors->has('image') ? 'is-invalid' : ''}}" id="image">
+              <label class="custom-file-label" for="image">Side Image</label>
+            </div>
+          </div>
 
 
             <a href="{{route('admin.sides.index')}}" class="btn btn-danger">Cancel</a>

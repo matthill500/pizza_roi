@@ -25,8 +25,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::middleware('auth:api')->group(function () {
 
   Route::get('user', [PassportController::class,'user']);
-  Route::get('logout', [PassportController::class,'logout']);
+  Route::post('logout', [PassportController::class,'logout']);
 
   Route::resource('pizzas', 'App\Http\Controllers\API\PizzaController');
+  Route::resource('sides', 'App\Http\Controllers\API\SideController');
 
 });

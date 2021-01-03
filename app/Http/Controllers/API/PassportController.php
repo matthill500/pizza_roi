@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use Validator;
 use App\Models\User;
+use App\Models\role;
 
 class PassportController extends Controller
 {
@@ -27,6 +28,8 @@ class PassportController extends Controller
       'email' => $request->email,
       'password' => bcrypt($request->password)
     ]);
+
+    $user->roles()->attach(Role::where('name','user')->first());
 
     $token = $user->createToken('Pizza_ROI')->accessToken;
     return response()->json(['token' => $token], 200);
@@ -62,14 +65,14 @@ class PassportController extends Controller
     }
   }
 
-
   public function user(){
     return response()->json(['user' => auth()->user()], 200);
   }
-  
+
 
   public function logout(Request $request){
     $request->user()->token()->revoke();
+
     return response()->json(['message' =>'Successfully logged out'], 200);
   }
 }

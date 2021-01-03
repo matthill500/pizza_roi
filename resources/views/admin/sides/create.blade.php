@@ -18,7 +18,7 @@
               <ul>
               </div>
             @endif
-            <form method="POST" action="{{ route('admin.sides.store') }}">
+            <form method="POST" action="{{ route('admin.sides.store') }}"  enctype="multipart/form-data">
                 @csrf
 
                 <div class="form-group row">
@@ -62,6 +62,14 @@
                         @enderror
                     </div>
                 </div>
+
+                <div class="form-group custom-file row" style="height:50px;margin-bottom:8px; margin-top:8px;">
+                  <label for="address" class="col-md-4 col-form-label text-md-right">Image</label>
+                  <div class="custom-file col-md-6">
+                    <input type="file" name="image" class="custom-file-input {{$errors->has('image') ? 'is-invalid' : ''}}" id="image">
+                    <label class="custom-file-label" for="image">Side Image</label>
+                </div>
+              </div>
 
                 <div class="form-group row mb-0">
                     <div class="col-md-6 offset-md-4">

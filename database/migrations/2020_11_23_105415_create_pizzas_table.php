@@ -18,6 +18,7 @@ class CreatePizzasTable extends Migration
             $table->string('name');
             $table->double('size', 3, 1);
             $table->float('retailPrice');
+            $table->string('image', 255)->default('image.png');
             $table->timestamps();
         });
     }

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Pizza;
 use App\Models\Topping;
 use App\Models\PizzaTop;
+use Storage;
 class PizzaController extends Controller
 {
     /**
@@ -55,13 +56,24 @@ class PizzaController extends Controller
       $request->validate([
       'name' => 'required|',
       'size' => 'required|',
-      'retailPrice' => 'required|'
+      'retailPrice' => 'required|',
+      'image' => 'nullable|image|max:1999'
       ]);
 
       $pizza = new Pizza();
       $pizza->name = $request->input('name');
       $pizza->size = $request->input('size');
       $pizza->retailPrice = $request->input('retailPrice');
+
+      if($request->hasFile('image')){
+      $image = $request->image;
+      $ext = $image->getClientOriginalExtension();
+      $filename = uniqid().'.'.$ext;
+      $image->storeAs('public/images',$filename);
+      Storage::delete("public/images/{$pizza->image}");
+      $pizza->image = 'storage/images/'.$filename;
+      }
+
       $pizza->save();
 
       $toppings = $request->input('topping_id');
@@ -121,12 +133,22 @@ class PizzaController extends Controller
       $request->validate([
         'name' => 'required|',
         'size' => 'required|',
-        'retailPrice' => 'required|'
+        'retailPrice' => 'required|',
+        'image' => 'nullable|image|max:1999'
       ]);
 
       $pizza->name = $request->input('name');
       $pizza->size = $request->input('size');
       $pizza->retailPrice = $request->input('retailPrice');
+      //img
+      if($request->hasFile('image')){
+      $image = $request->image;
+      $ext = $image->getClientOriginalExtension();
+      $filename = uniqid().'.'.$ext;
+      $image->storeAs('public/images',$filename);
+      Storage::delete("public/images/{$pizza->image}");
+        $pizza->image = 'storage/images/'.$filename;
+      }
 
       $pizza->save();
 

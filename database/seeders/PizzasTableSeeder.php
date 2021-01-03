@@ -23,6 +23,7 @@ class PizzasTableSeeder extends Seeder
       $largePepperoniPassion->name='Pepperoni Passion';
       $largePepperoniPassion->size=13.5;
       $largePepperoniPassion->retailPrice=22;
+      $largePepperoniPassion->image='images/Pepperoni-Passion.jpg';
 
       $largePepperoniPassion->save();
 
