@@ -19,7 +19,7 @@ class DealController extends Controller
          $this->middleware('auth');
          $this->middleware('role:admin');
      }
-     
+
     public function index()
     {
       $deals = Deal::all();
@@ -55,6 +55,7 @@ class DealController extends Controller
     {
     $request->validate([
     'name' => 'required|',
+    'description' => 'required|',
     'retailPrice' => 'required|',
     'pizza' => '',
     'side' => ''
@@ -62,6 +63,7 @@ class DealController extends Controller
 
     $deal = new Deal();
     $deal->name = $request->input('name');
+    $deal->description = $request->input('description');
     $deal->retailPrice = $request->input('retailPrice');
     $deal->save();
 
@@ -134,6 +136,7 @@ class DealController extends Controller
 
       $request->validate([
         'name' => 'required|',
+        'description' => 'required|',
         'retailPrice' => 'required|',
         'pizza' => '',
         'side' => ''
@@ -141,6 +144,7 @@ class DealController extends Controller
       ]);
 
       $deal->name = $request->input('name');
+      $deal->name = $request->input('description');
       $deal->retailPrice = $request->input('retailPrice');
 
 

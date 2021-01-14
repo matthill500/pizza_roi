@@ -4,31 +4,31 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Side;
-class SideController extends Controller
+use App\Models\Deal;
+class DealController extends Controller
 {
   public function index()
   {
-      $sides = Side::all();
+      $deals = Deal::all();
 
       return response()->json(
         [
             'status' => 'success',
-            'data' => $sides
+            'data' => $deals
         ],
         200);
   }
 
   public function show($id)
   {
-      $side = Side::find($id);
+      $deal = Deal::find($id);
 
-      if ($side === null) {
-        $statusMsg = 'Side not found!';
+      if ($deal === null) {
+        $statusMsg = 'deal not found!';
         $statusCode = 404;
       }
       else {
-        $side->load('side');
+        $deal->load('deal');
         $statusMsg = 'success';
         $statusCode = 200;
       }
@@ -36,7 +36,7 @@ class SideController extends Controller
       return response()->json(
         [
             'status' => $statusMsg,
-            'data' => $side
+            'data' => $deal
         ],
         $statusCode);
   }

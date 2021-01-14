@@ -16,7 +16,10 @@ class CreateDealsTable extends Migration
         Schema::create('deals', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->string('description');
             $table->float('retailPrice');
+            $table->string('image', 255)->default('image.png');
+            $table->string('type');
             $table->timestamps();
         });
     }

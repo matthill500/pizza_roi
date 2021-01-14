@@ -19,6 +19,7 @@ class CreateSidesTable extends Migration
             $table->float('retailPrice');
             $table->float('wholesalePrice');
             $table->string('image', 255)->default('image.png');
+            $table->string('type');
             $table->timestamps();
         });
     }

@@ -18,9 +18,10 @@ use App\Http\Controllers\API\PassportController;
 Route::post('register', [PassportController::class,'register']);
 Route::post('login', [PassportController::class,'login']);
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
 
 Route::middleware('auth:api')->group(function () {
 
@@ -29,5 +30,11 @@ Route::middleware('auth:api')->group(function () {
 
   Route::resource('pizzas', 'App\Http\Controllers\API\PizzaController');
   Route::resource('sides', 'App\Http\Controllers\API\SideController');
+  Route::resource('deals', 'App\Http\Controllers\API\DealController');
+  Route::resource('shops', 'App\Http\Controllers\API\ShopController');
+
+  Route::post('orders', [App\Http\Controllers\API\OrderController::class,'store']);
+
+  Route::get('/user/setup-intent/{id}', [App\Http\Controllers\API\UserController::class,'getSetupIntent']);
 
 });

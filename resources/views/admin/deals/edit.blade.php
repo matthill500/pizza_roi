@@ -30,6 +30,11 @@
             </div>
 
             <div class="form-group">
+              <label for="description">Description</label>
+              <input type="text" class="form-control" id="description" name="description" value="{{old('description', $deal->description)}}" />
+            </div>
+
+            <div class="form-group">
               <label for="retailPrice">Retail Price</label>
               <input type="float" class="form-control" id="retailPrice" name="retailPrice" value="{{old('retailPrice', $deal->retailPrice)}}" />
             </div>

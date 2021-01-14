@@ -93,8 +93,6 @@ class RegisterController extends Controller
 
         $cId = $customer->id;
 
-
-
         $address = CustomerAddress::create([
           'number' => $data['number'],
           'roadOrStreet' => $data['roadOrStreet'],
@@ -102,8 +100,6 @@ class RegisterController extends Controller
           'eircode' => $data['eircode'],
           'customer_id' => $cId,
         ]);
-
-
 
         return $user;
     }

@@ -13,7 +13,7 @@ class CreateOrderItemTable extends Migration
      */
     public function up()
     {
-        Schema::create('order_item', function (Blueprint $table) {
+        Schema::create('order_items', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('deal_id')->unsigned()->nullable();
             $table->biginteger('pizza_id')->unsigned()->nullable();
@@ -35,6 +35,6 @@ class CreateOrderItemTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('order_item');
+        Schema::dropIfExists('order_items');
     }
 }

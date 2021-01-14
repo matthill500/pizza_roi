@@ -7,7 +7,10 @@ use Illuminate\Http\Request;
 
 use Validator;
 use App\Models\User;
-use App\Models\role;
+use App\Models\Role;
+use App\Models\CustomerAddress;
+use App\Models\Customer;
+use Auth;
 
 class PassportController extends Controller
 {
@@ -16,6 +19,12 @@ class PassportController extends Controller
       'first_name' => 'required|min:3',
       'last_name' => 'required|min:3',
       'email' => 'required|email|unique:users',
+      'phone' => 'required|max:13|min:8',
+      'age' => 'required|date',
+      'number' => 'required|integer',
+      'roadOrStreet' => 'required|string',
+      'area' => 'required|string',
+      'eircode' => 'required|string',
       'password' => 'required|min:6',
     ]);
 
@@ -30,6 +39,24 @@ class PassportController extends Controller
     ]);
 
     $user->roles()->attach(Role::where('name','user')->first());
+
+    $uId = $user->id;
+
+    $customer = Customer::create([
+      'age' => $request->age,
+      'phone' => $request->phone,
+      'user_id' => $uId,
+    ]);
+
+    $cId = $customer->id;
+
+    $address = CustomerAddress::create([
+      'number' => $request->number,
+      'roadOrStreet' => $request->roadOrStreet,
+      'area' => $request->area,
+      'eircode' => $request->eircode,
+      'customer_id' => $cId
+    ]);
 
     $token = $user->createToken('Pizza_ROI')->accessToken;
     return response()->json(['token' => $token], 200);
@@ -58,7 +85,8 @@ class PassportController extends Controller
         'first_name' => $user->first_name,
         'last_name' => $user->last_name,
         'email' => $user->email,
-        'token' => $token
+        'token' => $token,
+        'id' => $user->id
       ], 200);
     }else{
       return response()->json(['error' => 'Unauthorized'], 401);
@@ -66,7 +94,17 @@ class PassportController extends Controller
   }
 
   public function user(){
-    return response()->json(['user' => auth()->user()], 200);
+    
+    $userId =  auth()->user()->id;
+    $customerId = Customer::where("user_id", "=", $userId)->first();
+    $customerAddress = CustomerAddress::where("customer_id", "=", $customerId->id)->first();
+   
+
+    return response()->json([
+      'user' => auth()->user(),
+      'customer' => $customerId,
+      'customerAddress' => $customerAddress
+    ], 200);
   }
 
 

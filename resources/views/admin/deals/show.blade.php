@@ -17,6 +17,10 @@
               <td>{{ $deal->name }}</td>
             </tr>
             <tr>
+              <td>Description</td>
+              <td>{{ $deal->description }}</td>
+            </tr>
+            <tr>
               <td>Retail Price</td>
               <td>{{ $deal->retailPrice }}</td>
             </tr>

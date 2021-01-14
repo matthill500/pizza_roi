@@ -82,9 +82,10 @@
                             </div>
                         </div>
                       </div>
+
                       <div class="address" style="border:2px solid lightgrey; border-radius:10px; margin-bottom:2em;">
                           <h5 style="padding:10px;"><b>Address</b></h5>
-                        <div class="form-group row">
+                         <div class="form-group row">
                             <label for="autocomplete" class="col-md-4 col-form-label text-md-right"> Address Search </label>
                           <div class="col-md-6">
                             <input type="text" name="autocomplete" id="autocomplete" class="form-control" placeholder="Search Location">

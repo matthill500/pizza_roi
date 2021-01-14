@@ -17,6 +17,7 @@ class CreateShopsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('shopCode');
+            $table->string('eircode');
             $table->bigInteger('user_id')->unsigned();
             $table->timestamps();
 

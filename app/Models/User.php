@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
+use Laravel\Cashier\Billable;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, Billable;
 
     /**
      * The attributes that are mass assignable.
@@ -49,6 +50,9 @@ class User extends Authenticatable
 
     public function shop(){
       return $this->belongsTo('App\Models\Shop', 'user_shop');
+    }
+    public function customer(){
+      return $this->belongsTo('App\Models\Customer');
     }
 
     public function authorizeRoles($roles){

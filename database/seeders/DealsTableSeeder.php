@@ -22,7 +22,10 @@ class DealsTableSeeder extends Seeder
 
       $theMegaDeal = new Deal();
       $theMegaDeal->name='The Mega Deal';
+      $theMegaDeal->description='Large Pizza and 2 x sumptuous sides for only €22.99';
       $theMegaDeal->retailPrice=22.99;
+      $theMegaDeal->image='storage/images/mega-deal.png';
+      $theMegaDeal->type='deal';
 
       $theMegaDeal->save();
 
