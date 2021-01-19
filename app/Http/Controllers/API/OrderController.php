@@ -75,6 +75,8 @@ class OrderController extends Controller
       $cartItems = $request->input('cart');
 
        foreach($cartItems as $cartItem){
+           $qty = $cartItem['qty'];
+           for($x = 0; $x < $qty; $x++){
             if($cartItem['product']['type'] == "pizza"){
               
             $pizza = Pizza::findOrFail($cartItem['product']['id']);
@@ -97,6 +99,7 @@ class OrderController extends Controller
                 $orderItem->order_id = $Order->id;
                 $orderItem->save();
             }
+        }
     }
       
       return response()->json([
