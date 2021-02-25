@@ -14,22 +14,22 @@ class PizzasTableSeeder extends Seeder
      */
     public function run()
     {
-      $top1 = Topping::where('name', 'pepperoni 13.5"')->first();
-      $top2 = Topping::where('name', 'cheese 13.5"')->first();
-      $top3 = Topping::where('name', 'Pizza sauce 13.5"')->first();
-      $top4 = Topping::where('name', 'dough 13.5"')->first();
-      $top5 = Topping::where('name', 'ham 13.5"')->first();
-      $top6 = Topping::where('name', 'sausage 13.5"')->first();
-      $top7 = Topping::where('name', 'onion 13.5"')->first();
-      $top8 = Topping::where('name', 'mushroom 13.5"')->first();
-      $top9 = Topping::where('name', 'beef 13.5"')->first();
-      $top10 = Topping::where('name', 'bacon 13.5"')->first();
-      $top11 = Topping::where('name', 'chorizo 13.5"')->first();
-      $top12 = Topping::where('name', 'meatball 13.5"')->first();
-      $top13 = Topping::where('name', 'Green and red peppers 13.5"')->first();
-      $top14 = Topping::where('name', 'Sweetcorn 13.5"')->first();
-      $top15 = Topping::where('name', 'Fresh tomato 13.5"')->first();
-      $top16 = Topping::where('name', 'pineapple 13.5"')->first();
+      $top1 = Topping::where('name', 'Pepperoni')->first();
+      $top2 = Topping::where('name', 'Cheese')->first();
+      $top3 = Topping::where('name', 'Pizza-sauce')->first();
+      $top4 = Topping::where('name', 'Dough')->first();
+      $top5 = Topping::where('name', 'Ham')->first();
+      $top6 = Topping::where('name', 'Sausage')->first();
+      $top7 = Topping::where('name', 'Onion')->first();
+      $top8 = Topping::where('name', 'Mushroom')->first();
+      $top9 = Topping::where('name', 'Beef')->first();
+      $top10 = Topping::where('name', 'Bacon')->first();
+      $top11 = Topping::where('name', 'Chorizo')->first();
+      $top12 = Topping::where('name', 'Meatball')->first();
+      $top13 = Topping::where('name', 'Green and red peppers')->first();
+      $top14 = Topping::where('name', 'Sweetcorn')->first();
+      $top15 = Topping::where('name', 'Fresh tomato')->first();
+      $top16 = Topping::where('name', 'Pineapple')->first();
 
 
       $largePepperoniPassion = new Pizza();

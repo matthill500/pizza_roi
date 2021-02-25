@@ -13,4 +13,8 @@ class Topping extends Model
     {
         return $this->belongsToMany('App\Models\Pizza', 'pizza_tops');
     }
+    public function stock()
+    {
+        return $this->hasMany('App\Models\ActualStock');
+    }
 }

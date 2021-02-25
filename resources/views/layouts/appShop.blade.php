@@ -37,6 +37,9 @@
                       <li class="nav-item">
                           <a class="nav-link" href="{{ route('shop.orders.index') }}">{{ __('Orders') }}</a>
                       </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="{{ route('shop.stock.create') }}">{{ __('Stock take') }}</a>
+                      </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

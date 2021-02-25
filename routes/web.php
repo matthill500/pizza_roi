@@ -91,3 +91,8 @@ Route::delete('/admin/orders/{id}', [App\Http\Controllers\Admin\OrderController:
 Route::get('/shop/orders', [App\Http\Controllers\Shop\OrderController::class, 'index'])->name('shop.orders.index');
 Route::get('/shop/orders/{id}', [App\Http\Controllers\Shop\OrderController::class, 'show'])->name('shop.orders.show');
 Route::delete('/shop/orders/{id}', [App\Http\Controllers\Shop\OrderController::class, 'destroy'])->name('shop.orders.destroy');
+
+//Shop Stock
+Route::get('/shop/stock', [App\Http\Controllers\Shop\StockController::class, 'index'])->name('shop.stock.index');
+Route::get('/shop/stock/create', [App\Http\Controllers\Shop\StockController::class, 'create'])->name('shop.stock.create');
+Route::post('/shop/stock/store', [App\Http\Controllers\Shop\StockController::class, 'store'])->name('shop.stock.store');

@@ -33,6 +33,8 @@ Route::middleware('auth:api')->group(function () {
   Route::resource('deals', 'App\Http\Controllers\API\DealController');
   Route::resource('shops', 'App\Http\Controllers\API\ShopController');
 
+
+  Route::post('IdealStock', [App\Http\Controllers\API\IdealStockController::class,'edit']);
   Route::post('orders', [App\Http\Controllers\API\OrderController::class,'store']);
 
   Route::get('/user/setup-intent/{id}', [App\Http\Controllers\API\UserController::class,'getSetupIntent']);

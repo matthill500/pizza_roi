@@ -9,7 +9,7 @@ class PizzaController extends Controller
 {
   public function index()
   {
-      $pizzas = Pizza::all();
+      $pizzas = Pizza::all()->load('toppings');
 
       return response()->json(
         [

@@ -15,7 +15,7 @@ class SidesTableSeeder extends Seeder
     public function run()
     {
       $chickenTender = new Side();
-      $chickenTender->name='Chicken Tenders';
+      $chickenTender->name='Chicken-Tenders';
       $chickenTender->retailPrice=4.99;
       $chickenTender->wholesalePrice=0.99;
       $chickenTender->image='storage/images/Chicken-Tenders.jpg';

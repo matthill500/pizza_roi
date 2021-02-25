@@ -29,29 +29,10 @@
               <input type="text" class="form-control" id="name" name="name" value="{{old('name', $topping->name)}}" />
             </div>
 
-            <div class="form-group">
-              <label for="size">Pie size</label>
-              <select name="pieSize">
-                @if ($topping->pieSize == 13.5)
-                  <option value="13.5" selected="selected">13.5</option>
-                  <option value="11.5">11.5</option>
-                  <option value="9.5">9.5</option>
-                @elseif ($topping->pieSize == 11.5)
-                  <option value="13.5">13.5</option>
-                  <option value="11.5" selected="selected">11.5</option>
-                  <option value="9.5">9.5</option>
-                @elseif ($topping->pieSize == 9.5)
-                  <option value="13.5">13.5</option>
-                    <option value="11.5">11.5</option>
-                  <option value="9.5" selected="selected">9.5</option>
-                @endif
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="weightPerPieGm">Weight Per Pie (Grams)</label>
-              <input type="float" class="form-control" id="weightPerPieGm" name="weightPerPieGm" value="{{old('weightPerPieGm', $topping->weightPerPieGm)}}" />
-            </div>
+            <!-- <div class="form-group">
+              <label for="Qty">Quantity</label>
+              <input type="float" class="form-control" id="Qty" name="Qty" value="{{old('Qty', $topping->Qty)}}" />
+            </div> -->
 
             <div class="form-group">
               <label for="price">Price (€)</label>
