@@ -13,22 +13,8 @@ class Order extends Model
     {
         return $this->belongsTo('App\Models\Coupon');
     }
-
-    public function deals()
-    {
-        return $this->belongsToMany('App\Models\Deal', 'order_items');
-    }
-
-    public function pizzas()
-    {
-        return $this->belongsToMany('App\Models\Pizza', 'order_items');
-    }
-
-    public function sides()
-    {
-        return $this->belongsToMany('App\Models\Side', 'order_items');
-    }
-
+   
+  
     public function shop()
     {
         return $this->belongsTo('App\Models\Shop');

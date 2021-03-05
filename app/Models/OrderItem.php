@@ -9,5 +9,6 @@ class OrderItem extends Model
 {
     use HasFactory;
 
+ 
     
 }

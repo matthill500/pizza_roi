@@ -67,9 +67,8 @@ class PassportController extends Controller
   public function login(Request $request){
     $validator = Validator::make($request->all(), [
       'email' => 'required|email|exists:users',
-      'password' => 'required|min:6',
+      'password' => 'required|min:6'
     ]);
-
     if($validator->fails()){
       return response()->json(['error' => 'Unauthorized'], 401);
     }
@@ -78,6 +77,7 @@ class PassportController extends Controller
       'email' => $request->email,
       'password'=> $request->password
     ];
+
     if(auth()->attempt($credentials)){
       $user = auth()->user();
       $token = $user->createToken('Pizza_ROI')->accessToken;
@@ -86,7 +86,8 @@ class PassportController extends Controller
         'last_name' => $user->last_name,
         'email' => $user->email,
         'token' => $token,
-        'id' => $user->id
+        'id' => $user->id,
+        'role' => $user->roles
       ], 200);
     }else{
       return response()->json(['error' => 'Unauthorized'], 401);
@@ -94,11 +95,11 @@ class PassportController extends Controller
   }
 
   public function user(){
-    
+
     $userId =  auth()->user()->id;
     $customerId = Customer::where("user_id", "=", $userId)->first();
     $customerAddress = CustomerAddress::where("customer_id", "=", $customerId->id)->first();
-   
+
 
     return response()->json([
       'user' => auth()->user(),
