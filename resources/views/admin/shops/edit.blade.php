@@ -39,6 +39,11 @@
               <input type="text" class="form-control" id="shopCode" name="shopCode" value="{{old('shopCode', $shop->shopCode)}}" />
             </div>
 
+            <div class="form-group">
+              <label for="eircode">Eircode</label>
+              <input type="text" class="form-control" id="eircode" name="eircode" value="{{old('eircode', $shop->eircode)}}" />
+            </div>
+
             <a href="{{route('admin.shops.index')}}" class="btn btn-danger">Cancel</a>
             <button type="submit" class="btn btn-primary float-right">Submit</button>
 

@@ -63,6 +63,20 @@
                 </div>
 
                 <div class="form-group row">
+                    <label for="eircode" class="col-md-4 col-form-label text-md-right">{{ __('eircode') }}</label>
+
+                    <div class="col-md-6">
+                        <input id="eircode" type="text" class="form-control @error('eircode') is-invalid @enderror" name="eircode" value="{{ old('eircode') }}" required autocomplete="eircode">
+
+                        @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="form-group row">
                     <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                     <div class="col-md-6">

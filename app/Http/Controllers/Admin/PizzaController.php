@@ -63,6 +63,7 @@ class PizzaController extends Controller
       $pizza->name = $request->input('name');
       $pizza->size = $request->input('size');
       $pizza->retailPrice = $request->input('retailPrice');
+      $pizza->type = 'pizza';
 
       if($request->hasFile('image')){
       $image = $request->image;
@@ -139,6 +140,7 @@ class PizzaController extends Controller
       $pizza->name = $request->input('name');
       $pizza->size = $request->input('size');
       $pizza->retailPrice = $request->input('retailPrice');
+      $pizza->type = 'pizza';
       //img
       if($request->hasFile('image')){
       $image = $request->image;

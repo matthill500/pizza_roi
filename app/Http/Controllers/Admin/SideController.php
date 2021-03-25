@@ -57,6 +57,7 @@ class SideController extends Controller
       $side->name = $request->input('name');
       $side->retailPrice = $request->input('retailPrice');
       $side->wholesalePrice = $request->input('wholesalePrice');
+      $side->type = 'side';
 
       if($request->hasFile('image')){
       $image = $request->image;
@@ -120,6 +121,7 @@ class SideController extends Controller
       $side->name = $request->input('name');
       $side->retailPrice = $request->input('retailPrice');
       $side->wholesalePrice = $request->input('wholesalePrice');
+      $side->type = 'side';
 
       if($request->hasFile('image')){
       $image = $request->image;

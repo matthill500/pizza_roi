@@ -52,6 +52,7 @@ class ShopController extends Controller
       'first_name' => 'required|',
       'last_name' => '',
       'shopCode' => 'required|',
+      'eircode' => 'required|',
       'email' => 'required|',
       'password' => 'required|'
       ]);
@@ -70,6 +71,7 @@ class ShopController extends Controller
       $shop = new Shop();
       $shop->name = $request->input('first_name');
       $shop->shopCode = $request->input('shopCode');
+      $shop->eircode = $request->input('eircode');
       $shop->user_id = $uId;
       $shop->save();
 
@@ -116,11 +118,13 @@ class ShopController extends Controller
       $request->validate([
       'name' => 'required|',
       'email' => 'required|',
-      'shopCode' => 'required|'
+      'shopCode' => 'required|',
+      'eircode' => 'required|'
       ]);
 
       $shop->name = $request->input('name');
       $shop->shopCode = $request->input('shopCode');
+      $shop->eircode = $request->input('eircode');
 
       $shop->save();
 

@@ -33,7 +33,8 @@ Route::middleware('auth:api')->group(function () {
   Route::resource('deals', 'App\Http\Controllers\API\DealController');
   Route::resource('shops', 'App\Http\Controllers\API\ShopController');
 
-
+  Route::get('ActualStock', [App\Http\Controllers\API\ActualStockController::class,'index']);
+  Route::get('IdealStock', [App\Http\Controllers\API\IdealStockController::class,'index']);
   Route::post('IdealStock', [App\Http\Controllers\API\IdealStockController::class,'edit']);
   Route::post('orders', [App\Http\Controllers\API\OrderController::class,'store']);
   Route::get('orders', [App\Http\Controllers\API\OrderController::class,'index']);

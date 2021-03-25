@@ -13,10 +13,20 @@ class IdealStockController extends Controller
   {
       $idealStocks = IdealStock::all();
 
+      $topStocks = DB::table('ideal_stock')
+      ->leftJoin('toppings', 'ideal_stock.top_id', '=', 'toppings.id')
+      ->get();
+
+      $sideStocks = DB::table('ideal_stock')
+      ->leftJoin('sides', 'ideal_stock.side_id', '=', 'sides.id')
+      ->get();
+
       return response()->json(
         [
             'status' => 'success',
-            'data' => $idealStocks
+            'data' => $idealStocks,
+            'tops' => $topStocks,
+            'sides' => $sideStocks
         ],
         200);
   }

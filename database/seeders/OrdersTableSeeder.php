@@ -31,8 +31,7 @@ class OrdersTableSeeder extends Seeder
       $order->save();
 
       $order->pizzas()->attach($pizza);
-      $order->sides()->attach($side);
-      $order->deals()->attach($deal);
+      // $order->sides()->attach($side);
 
       $order2 = new Order();
       $order2->status = 'confirmed';
@@ -43,7 +42,7 @@ class OrdersTableSeeder extends Seeder
       $order2->save();
 
       $order2->pizzas()->attach($pizza);
-      $order2->sides()->attach($side);
+      // $order2->sides()->attach($side);
 
 
     }

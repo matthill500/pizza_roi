@@ -19,6 +19,7 @@
             <th>Name</th>
             <th>shopCode</th>
             <th>Email</th>
+            <th>Eircode</th>
             <th></th>
             <th></th>
 
@@ -32,6 +33,7 @@
                 <td>{{ $shop->name }}</td>
                 <td>{{ $shop->shopCode }}</td>
                 <td>{{ $shop->user->email }}</td>
+                <td>{{ $shop->eircode }}</td>
                 <td></td>
 
                 <td>

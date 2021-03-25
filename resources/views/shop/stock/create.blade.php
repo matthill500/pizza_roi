@@ -14,6 +14,7 @@
             type="date" 
             id="stock-date" 
             name="stock-date"
+            required
             >
             </div>
         </div>

@@ -11,6 +11,7 @@ use App\Models\Pizza;
 use App\Models\Side;
 use App\Models\Deal;
 use Auth;
+use DB;
 
 class OrderController extends Controller
 {
@@ -18,12 +19,23 @@ class OrderController extends Controller
   {
       $orders = Order::all();
 
-      //statement
+      $ordersPizzas = DB::table('orders')
+      ->leftJoin('order_items', 'orders.id', '=', 'order_items.order_id')
+      ->leftJoin('pizzas', 'order_items.pizza_id', '=', 'pizzas.id')
+      ->get();
+
+      $ordersSides = DB::table('orders')
+      ->leftJoin('order_items', 'orders.id', '=', 'order_items.order_id')
+      ->leftJoin('sides', 'order_items.side_id', '=', 'sides.id')
+      ->get();
+
 
       return response()->json(
         [
             'status' => 'success',
-            'data' => $orders
+            'data' => $orders,
+            'queriedOrdersPizzas' => $ordersPizzas,
+            'queriedOrdersSides' => $ordersSides,
         ],
         200);
   }
