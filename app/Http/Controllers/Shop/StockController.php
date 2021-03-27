@@ -34,9 +34,10 @@ class StockController extends Controller
 
     public function store(Request $request)
     { 
-      $actualStocks = ActualStock::all();
+      $actualStocks = ActualStock::all()->where('date', '=', Carbon::now()->subDay()->toDateString());
       foreach($actualStocks as $actualStock){
         if($actualStock->top_id !== null){
+
         $topping = Topping::where('id', $actualStock->top_id)->get();
         $toppingName = $topping[0]->name;
         $newStockTopping = new ActualStock();
